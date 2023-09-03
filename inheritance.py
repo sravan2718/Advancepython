@@ -1,271 +1,298 @@
 
+# multiple inheritance:
+
+# creating class for father
+class Dad():
+	# writing a method for parent class 1
+	def singing(self):
+		print("Dad sings well")
+		
+# creating a class for mother
+class Mom():
+	# method for parent class 2
+	def coding(self):
+		print("Mom codes well")
+
+# creating derived class
+class Child(Dad, Mom):
+	def play(self):
+                print("Kid loves to play")
+                
+# creating object of the new derived class
+child = Child()
+# calling methods of parent classes and derived class
+child.singing()
+child.coding()
+child.playing()
+
+# example:
 
 class Person:
-  def __init__(self, fname, lname):
-    self.firstname = fname
-    self.lastname = lname
+	def display(self):
+		print("Person called")
+	
+class Father(Person):
+	def display(self):
+		print("Father called")
+	
+class Mother(Person):
+	def display(self):
+		print("Mother called")
+	
+class Child( Mother, Father):
+	pass
+	
+child_obj = Child()
+child_obj.display()
 
-  def printname(self):
-    print(self.firstname, self.lastname)
+#example;
 
-#Use the Person class to create an object, and then execute the printname method:
+class Car():
+	def audi(self):
+		print("This is an audi car")
+	
+class Bike():
+	def kawasaki(self):
+		print("This is a Kawasaki Ninja")
+		
+class Bus():
+	def bharatBenz(self):
+		print("This is Bharat Benz")
+		
+class Truck():
+	def eicher(self):
+		print("Eicher Truck here")
+	
+class Plane():
+	def omanAir(self):
+		print("Oman air all the way")
+		
+# derived classs with multiple base classes - Car, Bike, Bus, Truck, Plane
+class Transport(Car, Bike, Bus, Truck, Plane):
+	def main(self):
+		print("Main class")
 
-x = Person("John", "Doe")
-x.printname()
+# creating derived class object
+obj = Transport()
+# calling funcions of base classes
+obj.audi()
+obj.kawasaki()
+obj.bharatBenz()
+obj.eicher()
+obj.omanAir()
+obj.main()
 
+#example:
 
-class Student(Person):
-  def __init__(self, fname, lname, year):
-    super().__init__(fname, lname)
-    self.graduationyear = year
+class Father():
+    def Driving(self):
+        print("Father loves Driving")
+class Mother():
+    def Cooking(self):
+        print("Mother loves Cooking")
+class Child(Father, Mother):
+    def Playing(self):
+        print("Child enjoying Playing")
+c = Child()
+c.Driving()
+c.Cooking()
+c.Playing()
 
-  def welcome(self):
-    print("Welcome", self.firstname, self.lastname, "to the class of", self.graduationyear)
+#heirechal inheritance:
 
+# Here, we will create the Base class   
+class Parent1:  
+    def func_1(self):  
+        print ("This function is defined inside the parent class.")  
+  
+# Derived class1  
+class Child_1(Parent1):  
+    def func_2(self):  
+        print ("This function is defined inside the child 1.")  
+  
+# Derivied class2  
+class Child_2(Parent1):  
+    def func_3(self):  
+        print ("This function is defined inside the child 2.")
+# Driver's code  
+object1 = Child_1()  
+object2 = Child_2()  
+object1.func_1()  
+object1.func_2()  
+object2.func_1()
+object2.func_3()
 
- A Python program to demonstrate inheritance
-class Person(object):
-   
-  # Constructor
-  def __init__(self, name, id):
-    self.name = name
-    self.id = id
- 
-  # To check if this person is an employee
-  def Display(self):
-    print(self.name, self.id)
- 
- 
-# Driver code
-emp = Person("Satyam", 102) # An Object of Person
-emp.Display()
-
-class Emp(Person):
-   
-  def Print(self):
-    print("Emp class called")
-     
-Emp_details = Emp("Mayank", 103)
- 
-# calling parent class function
-Emp_details.Display()
- 
-# Calling child class function
-Emp_details.Print()
-
-# A Python program to demonstrate inheritance
-
-lass Person(object):
- 
-    # Constructor
-    def __init__(self, name):
-        self.name = name
- 
-    # To get name
-    def getName(self):
-        return self.name
- 
-    # To check if this person is an employee
-    def isEmployee(self):
-        return False
- 
- 
-# Inherited or Subclass (Note Person in bracket)
-class Employee(Person):
- 
-    # Here we return true
-    def isEmployee(self):
-        return True
- 
- 
-# Driver code
-emp = Person("Geek1")  # An Object of Person
-print(emp.getName(), emp.isEmployee())
- 
-emp = Employee("Geek2")  # An Object of Employee
-print(emp.getName(), emp.isEmployee())
-
-# parent class
-class Person(object):
- 
-    # __init__ is known as the constructor
-    def __init__(self, name, idnumber):
-        self.name = name
-        self.idnumber = idnumber
- 
+# Example:
+    
+class ClassA:
     def display(self):
-        print(self.name)
-        print(self.idnumber)
- 
-# child class
-class Employee(Person):
-    def __init__(self, name, idnumber, salary, post):
-        self.salary = salary
-        self.post = post
+        print('In Class A')
 
- # invoking the __init__ of the parent class
-        Person.__init__(self, name, idnumber)
- 
-# creation of an object variable or an instance
-a = Employee('Rahul', 886012, 200000, "Intern")
- 
-# calling a function of the class Person using its instance
-a.display()
+class ClassB(ClassA):
+    def display(self):
+        ClassA.display(self)
+        print('In Class B')
 
+class ClassC(ClassA):
+    def display(self):
+        ClassA.display(self)
+        print('In Class C')
+
+class ClassD(ClassA):
+    def display(self):
+        ClassA.display(self)
+        print('In Class D')
+
+x = ClassB()
+y = ClassC()
+z = ClassD()
+x.display()
+y.display()
+z.display()
+
+# example:
+
+class Parent:
+      def func1(self):
+          print("this is function 1")
+class Child(Parent):
+      def func2(self):
+          print("this is function 2")
+class Child2(Parent):
+      def func3(self):
+          print("this is function 3")
+ 
+ob = Child()
+ob1 = Child2()
+ob.func1()
+ob.func2()
+
+#example:
 
 class A:
-    def __init__(self, n='Rahul'):
-        self.name = n
- 
+    def display(self, output):
+        print(output)
+        
 class B(A):
-    def __init__(self, roll):
-        self.roll = roll
- 
-object = B(23)
-print(object.name)
+    def display(self):
+        super().display('Hello from B')
+        
+class C(A):
+    def display(self):
+        super().display('Hello from C')
+        
+b = B()
+b.display()
 
-# parent class
-class Person():
-  def __init__(self, name, age):
-    self.name = name
-    self.age = age
- 
-  def display(self):
-    print(self.name, self.age)
- 
-# child class
-class Student(Person):
-  def __init__(self, name, age):
-    self.sName = name
-    self.sAge = age
-    # inheriting the properties of parent class
-    super().__init__("Rahul", age)
- 
-  def displayInfo(self):
-    print(self.sName, self.sAge)
-# inheriting the properties of parent class
-    super().__init__("Rahul", age)
- 
-  def displayInfo(self):
-    print(self.sName, self.sAge)
- 
-obj = Student("Mayank", 23)
-obj.display()
-obj.displayInfo()
+c = C()
+c.display()
 
-# parent class
-class Person():
-  def __init__(self, name, age):
-    self.name = name
-    self.age = age
- 
-  def display(self):
-    print(self.name, self.age)
- 
-# child class
-class Student(Person):
-  def __init__(self, name, age, dob):
-    self.sName = name
-    self.sAge = age
-    self.dob = dob
+# hybrid inheritance:
 
- # inheriting the properties of parent class
-    super().__init__("Rahul", age)
- 
-  def displayInfo(self):
-    print(self.sName, self.sAge, self.dob)
- 
-obj = Student("Mayank", 23, "16-03-2000")
-obj.display()
-obj.displayInfo()
+class A:
+    def display(self):
+        print("Super Parent display method")
 
- Python example to show the working of multiple
-# inheritance
- 
-class Base1(object):
-    def __init__(self):
-        self.str1 = "Geek1"
-        print("Base1")
- 
- 
-class Base2(object):
-    def __init__(self):
-        self.str2 = "Geek2"
-        print("Base2")
 
-class Derived(Base1, Base2):
-    def __init__(self):
- 
-        # Calling constructors of Base1
-        # and Base2 classes
-        Base1.__init__(self)
-        Base2.__init__(self)
-        print("Derived")
- 
-    def printStrs(self):
-        print(self.str1, self.str2)
- 
- 
-ob = Derived()
-ob.printStrs()
+""" class B used as intermediate class
+to call class A's display method """
+class B(A):
+    def display(self):
+        super().display()
 
-class Base(object):
- 
-    # Constructor
-    def __init__(self, name):
-        self.name = name
- 
-    # To get name
-    def getName(self):
-        return self.name
- 
- 
-# Inherited or Sub class (Note Person in bracket)
-class Child(Base):
- 
-    # Constructor
-    def __init__(self, name, age):
-        Base.__init__(self, name)
-        self.age = age
- 
-    # To get name
-def getAge(self):
-        return self.age
- 
-# Inherited or Sub class (Note Person in bracket)
- 
- 
-class GrandChild(Child):
- 
-    # Constructor
-    def __init__(self, name, age, address):
-        Child.__init__(self, name, age)
-        self.address = address
- 
-    # To get address
-    def getAddress(self):
-        return self.address
-#Driver code
-g = GrandChild("Geek1", 23, "Noida")
-print(g.getName(), g.getAge(), g.getAddress())
+''' child classes '''
+class C(B):
+    def display(self):
+        super().display()
+        print("Class C display method")
+        
+class D(B):
+    def display(self):
+        super().display()
+        print("Class D display method")
 
-# Python program to demonstrate private members
-# of the parent class
+c = C()
+c.display()
+
+d = D()
+d.display()
+
+# hybrid inheritance example
  
-class C(object):
-    def __init__(self):
-        self.c = 21
- 
-        # d is private instance variable
-        self.__d = 42
+class parent1:                            # first parent class
+    def func1(self):                   
+        print("Hello Parent")
  
  
-class D(C):
-    def __init__(self):
-        self.e = 84
-        C.__init__(self)
+class parent2:                            # second parent class
+    def func2(self):                   
+        print("Hello Parent")
  
-object1 = D()
-# produces an error as d is private instance variable
-print(object1.c)
-print(object1.__d)
+class child1(parent1):                    # first child class
+    def func3(self):                   
+        print("Hello Child1")
+class child2(child1, parent2):            # second child class
+    def func4(self):                   
+        print("Hello Child2")   
+                               
+ 
+# Driver Code
+test1 = child1()                          # object created
+test2 = child2()
+ 
+test1.func1()                       # child1 calling parent1 method
+test1.func3()                       # child1 calling its own method
+ 
+test2.func1()                       # child2 calling parent1 method
+test2.func2()                       # child2 calling parent2 method
+test2.func3()
+test2.func4()
+
+
+# Hybrid Inheritance
+class vehicle:
+    
+    def __init__(self,model,mileage,price):
+        self.price = price
+        self.mileage = mileage
+        self.model = model
+        
+    def show_details(self):
+        print(f'Model : {self.model}')
+        print(f'Price : {self.price}')
+        print(f'Mileage : {self.mileage}')
+class bike(vehicle):
+    
+    # Inherit Properties and Override
+    def __init__(self,model,mileage,price,tyre,cc):
+        super().__init__(model,mileage,price)
+        self.cc = cc
+        self.tyre = tyre
+    
+    # Inherit Behavior and Override
+    def show_details(self):
+        super().show_details()
+        print(f'CC : {self.cc}')
+        print(f'Tyres : {self.tyre}')
+    
+    # Method of Derived Class
+    def rating(self):
+        print('4 star')
+        
+
+class car(bike,vehicle):
+    
+    def rating(self):
+        print('5 star')
+
+bajaj = bike("Dominar",40,145000,2,500)
+tata = car("Safari",25,2500000,4,2000)
+
+bajaj.show_details()
+tata.show_details()
+
+bajaj.rating()
+tata.rating()
+ 
+
+
