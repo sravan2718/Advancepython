@@ -1,273 +1,270 @@
 
-# paramaterized constructor:
 
-class Employee:  
-    def __init__(self, name, id):  
-        self.id = id  
-        self.name = name  
-  
-    def display(self):  
-        print("ID: %d \nName: %s" % (self.id, self.name))  
-  
-  
-emp1 = Employee("John", 101)  
-emp2 = Employee("David", 102)  
-  
-# accessing display() method to print employee 1 information  
+# instance variables:
+
+class Student:
+    # constructor
+    def __init__(self, name, age):
+        # Instance variable
+        self.name = name
+        self.age = age
+
+# create first object
+s1 = Student("Jessa", 20)
+
+# access instance variable
+print('Object 1')
+print('Name:', s1.name)
+print('Age:', s1.age)
+
+# create second object
+s2= Student("Kelly", 10)
+
+# access instance variable
+print('Object 2')
+print('Name:', s2.name)
+print('Age:', s2.age)
 
 
-emp1.display()  
-  
-# accessing display() method to print employee 2 information  
-emp2.display()  
+# example:
+class student:
+  # constructor
+    def __init__(self, name, age):
+        # Instance variable
+        self.name = name
+        self.age = age
+
+# create object
+stud = Student("Jessa", 20)
+
+print('Before')
+print('Name:', stud.name, 'Age:', stud.age)
+
+# modify instance variable
+stud.name = 'Emma'
+stud.age = 15
+
+print('After')
+print('Name:', stud.name, 'Age:', stud.age)
+
+
+#Access instance variable in the instance method:
+
+class Student:
+    # constructor
+    def __init__(self, name, age):
+        # Instance variable
+        self.name = name
+        self.age = age
+
+    # instance method access instance variable
+    def show(self):
+        print('Name:', stud.name, 'Age:', stud.age)
+
+# create object
+stud = Student("Jessa", 20)
+
+# call instance method
+stud.show()
 
 
 # example:
 
-class Student:    
-    count = 0    
-    def __init__(self):    
-        Student.count = Student.count + 1    
-s1=Student()    
-s2=Student()    
-s3=Student()    
-print("The number of students:",Student.count)    
+class Student:
+    # constructor
+    def __init__(self, name, age):
+        # Instance variable
+        self.name = name
+        self.age = age
+
+# create object
+stud = Student("Jessa", 20)
+
+# Use getattr instead of stud.name
+print('Name:', getattr(stud, 'name'))
+print('Age:', getattr(stud, 'age'))
 
 
-#python non paramaterized constructor:
+# example;
 
-class Student:  
-    # Constructor - non parameterized  
-    def __init__(self):  
-        print("This is non parametrized constructor")  
-    def show(self,name):  
-        print("Hello",name)  
-student = Student()  
-student.show("John")
+class Student:
+    def __init__(self, name, age):
+        # Instance variable
+        self.name = name
+        self.age = age
 
-# example:
+# create object
+stud = Student("Jessa", 20)
 
-class Student:  
-    # Constructor - parameterized  
-    def __init__(self, name):  
-        print("This is parametrized constructor")  
-        self.name = name  
-    def show(self):  
-        print("Hello",self.name)  
-student = Student("John")  
-student.show()
+print('Before')
+print('Name:', stud.name, 'Age:', stud.age)
+
+# add new instance variable 'marks' to stud
+stud.marks = 75
+print('After')
+print('Name:', stud.name, 'Age:', stud.age, 'Marks:', stud.marks)
 
 
-#python default constructor:
+# dynamacally delete instance variables:
 
-class Student:  
-    roll_num = 101  
-    name = "Joseph"  
-  
-    def display(self):  
-        print(self.roll_num,self.name)  
-  
-st = Student()  
-st.display()
+class Student:
+    def __init__(self, roll_no, name):
+        # Instance variable
+        self.roll_no = roll_no
+        self.name = name
 
-# example:
+# create object
+s1 = Student(10, 'Jessa')
+print(s1.roll_no, s1.name)
 
-class Student:  
-    def __init__(self):  
-        print("The First Constructor")  
-    def __init__(self):  
-        print("The second contructor")  
-  
-st = Student()
-
+# del name
+del s1.name
+# Try to access name variable
+print(s1.name)
 
 # example:
 
-class Student:  
-    def __init__(self, name, id, age):  
-        self.name = name  
-        self.id = id  
-        self.age = age  
-  
-    # creates the object of the class Student  
-s = Student("John", 101, 22)  
-  
-# prints the attribute name of the object s  
-print(getattr(s, 'name'))  
-  
-# reset the value of attribute age to 23  
-setattr(s, "age", 23)  
+class Student:
+    def __init__(self, roll_no, name):
+        # Instance variable
+        self.roll_no = roll_no
+        self.name = name
 
-# prints the modified value of age  
-print(getattr(s, 'age'))  
-  
-# prints true if the student contains the attribute with name id  
-  
-print(hasattr(s, 'id'))  
-# deletes the attribute age  
-delattr(s, 'age')  
-  
-# this will give an error since the attribute age has been deleted  
-print(s.age)
+    def show(self):
+        print(self.roll_no, self.name)
 
+s1 = Student(10, 'Jessa')
+s1.show()
 
-# example:
+# delete instance variable using delattr()
+delattr(s1, 'roll_no')
+s1.show()
 
+# access instance variable:
 
-class Student:    
-    def __init__(self,name,id,age):    
-        self.name = name;    
-        self.id = id;    
-        self.age = age    
-    def display_details(self):    
-        print("Name:%s, ID:%d, age:%d"%(self.name,self.id))    
-s = Student("John",101,22)    
-print(s.__doc__)    
-print(s.__dict__)    
-print(s.__module__)    
-
-# default constructor:
-
-
-class A():
-    check_value = 1000
-    # a method
-    def value(self):
-        print(self.check_value)
-
-# creating an object of the class
-obj = A()
-
-# calling the instance method using the object
-obj.value()
-
-# example:
-
-class Family:
-   members = 10
-   def __init__(self, count):
-      self.members = count
-   
-   def disply(self):
-      print("Number of members is", self.members)  
-
-joy_family = Family(25)
-joy_family.disply()
-
-# example:
-
-class Player:
-   def __init__(self):
-      self.position = 0
-   
-   # Add a move() method with steps parameter     
-   def move(self, steps):
-      self.position = steps
-      print(self.position)
-   
-   def result(self):
-      print(self.position)
-
-player1 = Player()
-print('player1 results')
-player1.move(2)
-player1.result()
-
-print('p2 results')
-p2 = Player()
-p2.result()
-
-
-
-# example:
-
-
-class Plane:
+class Vehicle:
     def __init__(self):
-        self.wings = 2
+        self.engine = '1500cc'
 
-        # fly
-        self.drive()
-        self.flaps()
-        self.wheels()
+class Car(Vehicle):
+    def __init__(self, max_speed):
+        # call parent class constructor
+        super().__init__()
+        self.max_speed = max_speed
 
-    def drive(self):
-            print('Accelerating')
+    def display(self):
+        # access parent class instance variables 'engine'
+        print("Engine:", self.engine)
+        print("Max Speed:", self.max_speed)
 
-    def flaps(self):
-            print('Changing flaps')
-
-    def wheels(self):
-            print('Closing wheels')
-
-ba = Plane()
-
-# example:
+# Object of car
+car = Car(240)
+car.display()
 
 
-class Bug:
-   def __init__(self):
-       self.wings = 4
-
-class Human:
-   def __init__(self):
-       self.legs = 2
-       self.arms = 2
-
-bob = Human()
-tom = Bug()
-
-print(tom.wings)
-print(bob.arms)
-
-# example:
-
-
-class Employee:
-   def __init__(self, id,name):
-       self.id=id
-       self.name=name
-   def display(self):
-       print("Hello my id is :", self.id)
-       print("My name is :", self.name)
-e1=Employee(1, 'Nithin')
-e1.display()
-e2=Employee(2, 'Arjun')
-e2.display()
-
-# example:
+# python class method:
 
 class Student:
-  def __init__(self, name, roll_no)
-    self.name = name
-    self.roll_no = roll_no
+  marks = 0
 
-  def display(self):
-    print ("Roll No.: %d \nName: %s" % (self.roll_no, self.name))
+  def compute_marks(self, obtained_marks):
+    marks = obtained_marks
+    print('Obtained Marks:', marks)
 
-# Creating object of the class
-stud1 = Student("Alex", 34)
-stud2 = Student("Mark", 67)
+# convert compute_marks() to class method
+Student.print_marks = classmethod(Student.compute_marks)
+Student.print_marks(88)
 
-stud1.display()
-stud2.display()
+#example:
 
+class Person:
+    age = 25
+
+    def printAge(cls):
+        print('The age is:', cls.age)
+
+# create printAge class method
+Person.printAge = classmethod(Person.printAge)
+
+Person.printAge()
+
+
+# example;
+
+From datetime import date
+
+# random Person
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    @classmethod
+    def fromBirthYear(cls, name, birthYear):
+        return cls(name, date.today().year - birthYear)
+
+    def display(self):
+        print(self.name + "'s age is: " + str(self.age))
+
+person = Person('Adam', 19)
+person.display()
+
+person1 = Person.fromBirthYear('John',  1985)
+person1.display()
+
+
+# static variables:
+
+class Bakery:
+    type = 'cake'                  # Class Variable
+    def __init__(self,flavor,price):
+        self.flavor = flavor            # Instance Variable
+        self.price = price            # Instance Variable
+ 
+# Objects of Bakery class
+a = Bakery('Butterscotch Cake', 300)
+b = Bakery('Chocolate-Truffle Cake', 250)
+ 
+print(a.type)  # prints "cake"
+print(b.type)  # prints "cake"
+print(a.flavor)    # prints "Butterscotch Cake"
+print(b.flavor)    # prints "Chocolate-Truffle Cake"
+print(a.price)    # prints "300"
+print(b.price)    # prints "250"
 
 # example:
 
-class Student:
+class Cake:
+  noOfCakes = 0
+  
+  
+  @classmethod
+  def show(cls):
+    print('Inside class method')
+    cls.noOfCakes = cls.noOfCakes + 1 ## accessing using clas
+    print('No of cakes: ', cls.noOfCakes)
+    Cake.noOfCakes = Cake.noOfCakes + 1 ##accessing using class name
+    print('No of cakes: ', Cake.noOfCakes)
+    
+    
+    
+    c = Cake()
+c.display()
+c.show()
+c.appear()
 
-# Parameterized constructor
-  def __init__(self, name, roll_no):
-    self.name = name
-    self.roll_no = roll_no
+# example;
 
-  def display(self):
-    print ("Roll No.: %d \nName: %s" % (self.roll_no, self.name))
+class Cake:
+  noOfCakes = 0
+  
+  def __init__(self):
+    type(self).noOfCakes = type(self).noOfCakes + 1
+  
+c1 = Cake() ##Object1
+c2 = Cake()  ##Object2
+print('Accessing class variable using object c1: ', c1.noOfCakes)
+print('Accessing class variable using object c2: ',c2.noOfCakes)
+print('Accessing class variable using classname: ', Cake.noOfCakes)
 
-# Creating object of the class
-stud1 = Student("Navya", 34)
-stud2 = Student("Mia", 67)
-
-stud1.display()
-stud2.display()
+ 
